@@ -6,24 +6,23 @@
 <title>JS Test</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="8queens.js"></script>
+<script src="drawboard.js"></script>
 <script>
   var show8Queen = function(n) {
+    var canvas = $("#answer-canvas").get(0);
+    var msgDiv = $("#answer-div");
     var start_time = +new Date();
-    var ans = eightQueens.evaluate(n);
+    var board = eightQueens.evaluate(n, 'hc');
     var end_time = +new Date();
-
     var msg = '<br>Found a '+ n + '-queens solution in '
-            + (end_time - start_time) + ' ms.<br><br>'
-            + eightQueens.boardToString(ans, '.', 'Q');
-    return msg;
+            + (end_time - start_time) + ' ms.<br><br><br>';
+    msgDiv.html(msg);
+    drawBoard(canvas, board);
   };
 </script>
 </head>
 
-<body>
-
-
-  
+<body> 
 
 
   <article>
@@ -35,11 +34,13 @@
         Input number of queens:
         <input type="number" name="puz">
         <input type="button" value="Click"
-          onClick="$('#answer-div').html('<p><code>' + show8Queen(this.form.puz.value)+ '</code></p>');">
+          onClick="show8Queen(this.form.puz.value);">
         </form>
         <br><br>
         <div id="answer-div">
         </div>
+
+        <canvas id="answer-canvas" width="640" height="640"></canvas>
      </div>
 
    
