@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<head>
+   <title>Pancakes Puzzle By IDS</title>
+   <meta charset="utf-8" />
+
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+   <script src="pancakespuzzle.min.js"></script>
+
+   <style type="text/css">
+   html{height: 100%; margin: 0; padding: 0;}
+   body{ background: #FED; margin: 0; padding: 0; height: 100%;}
+   
+   article{
+      min-height: 100%;width: 960px; margin:20px auto 32px; background: #FFF;
+      padding-top: 20px; 
+-moz-box-shadow:0px 0px 8px #444;
+-webkit-box-shadow:0px 0px 8px #444;
+box-shadow:0px 0px 8px #444;
+   }
+
+   h1{margin: 0; padding: 0;}
+
+   footer{ bottom:0; height:80px;
+      background: #FFF; margin:auto auto 0; width: 960px;
+      text-align: center;-moz-box-shadow:0px 0px 8px #444;-webkit-box-shadow:0px 0px 8px #444;box-shadow:0px 0px 8px #444;
+   }
+
+   #arti-block{width: 600px;margin:0 auto; }
+   #answer-div{background: #EEE; padding: 8px; font-size: 12pt;}
+   </style>
+   
+</head>
+
+<body>
+<article>
+   <div id="arti-block">
+      <h1>A.I. HW2 - Pancakes Puzzle By IDS</h1>
+      <br><br>
+      <img src="fate01.png" alt="fate" height="400"/>
+      <br><br>
+
+      <form name="xddd" onsubmit="return checkForm(false);">
+      Input the Testdata:
+      <input type="text" name="puz">
+      <input type="button" value="Click"
+      onClick="$('#answer-div').html('<p><code>' + pancakesPuzzleFromText(this.form.puz.value) + '</code></p>');">
+      </form>
+      <br><br>
+      <div id="answer-div">
+      </div>
+   </div>
+
+   
+</article>
+<footer><br>
+   Copyright (c) 2013 N.S.Lin @ csie.ntnu(Taiwan)<br>
+
+   </footer>
+
+</body>
