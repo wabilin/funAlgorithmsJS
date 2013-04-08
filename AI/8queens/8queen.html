@@ -1,19 +1,53 @@
 <!doctype html>
+
 <html>
 <head>
+<meta charset="utf-8" />
 <title>JS Test</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="8queens.js"></script>
+<script>
+  var show8Queen = function(n) {
+    var start_time = +new Date();
+    var ans = eightQueens.evaluate(n);
+    var end_time = +new Date();
+
+    var msg = '<br>Found a '+ n + '-queens solution in '
+            + (end_time - start_time) + ' ms.<br><br>'
+            + eightQueens.boardToString(ans, '.', 'Q');
+    return msg;
+  };
+</script>
 </head>
 
 <body>
-	<div>
-		XD<br>
-	</div>
 
-<script>
-document.write(eightQueens.evaluate(4).toString());
-</script>
+
+  
+
+
+  <article>
+     <div id="arti-block">
+        <h1>8 Queens by DFS</h1>
+        <br><br>  <br><br>
+
+        <form name="xddd" onsubmit="return checkForm(false);">
+        Input number of queens:
+        <input type="number" name="puz">
+        <input type="button" value="Click"
+          onClick="$('#answer-div').html('<p><code>' + show8Queen(this.form.puz.value) + '</code></p>');">
+        </form>
+        <br><br>
+        <div id="answer-div">
+        </div>
+     </div>
+
+   
+  </article>
+  <footer>
+    <br>Copyright (c) 2013 N.S.Lin @ csie.ntnu(Taiwan)<br>
+  </footer>
+
 </body>
 
 
