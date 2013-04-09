@@ -22,13 +22,13 @@
   qq.src = 'q.png';
   if(!isImageOk(qq)) { qq =undefined; }
 
-  var show8Queen = function(n) {   
+  var show8Queen = function(n, fun) {   
 
     var canvas = $("#answer-canvas").get(0);
     var msgDiv = $("#answer-div");
     var srtAns = $("#str-ans");
     var start_time = +new Date();
-    var board = eightQueens.evaluate(n, 'hc');
+    var board = eightQueens.evaluate(n, fun);
     var end_time = +new Date();
     var msg = '<br>Found a '+ n + '-queens solution in '
             + (end_time - start_time) + ' ms.<br><br><br>';
@@ -50,8 +50,12 @@
         <form name="xddd" onsubmit="return checkForm(false);">
         Input number of queens:
         <input type="number" name="puz">
+        <select name="fun">
+  <option value="dfs">DFS</option>
+  <option value="hc">Hill Climbing</option>
+</select>
         <input type="button" value="Click"
-          onClick="show8Queen(this.form.puz.value);">
+          onClick="show8Queen(this.form.puz.value, this.form.fun.value);">
         </form>
         <br><br>
         <div id="answer-div">
