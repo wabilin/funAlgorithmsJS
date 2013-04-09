@@ -199,7 +199,7 @@ eightQueens.evaluate = function(size, funcName) {
 
 
   // -- control proc --
-  if (size < 4) { return undefined; }
+  if (size < 4 && size !== 1) { return undefined; }
 
   funcName = funcName || "dfs";
   if (funcName == "dfs" && dfs(0)){ return board; }  
