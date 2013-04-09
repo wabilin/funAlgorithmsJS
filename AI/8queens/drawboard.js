@@ -1,4 +1,4 @@
-var drawBoard = function(canvas, board, img) {
+var drawBoard = function(canvas, board, image) {
   var ctx = canvas.getContext("2d");
 
   var width = canvas.getAttribute("width") || 1;
@@ -27,18 +27,18 @@ var drawBoard = function(canvas, board, img) {
 
     ctx.fillStyle = "rgb(40, 40, 200)";
     ctx.beginPath();
-    ctx.arc(x, y, r , 0, Math.PI*2, true); 
+    ctx.arc(x+side*0.5, y+side*0.5, r , 0, Math.PI*2, true); 
     ctx.closePath();
     ctx.fill();
   };
 
   var drawQueenImg = function(x, y, r) {
-    r = r || side*0.38;
-    ctx.drawImage (img, x, y, r*2, r*2);
+    r = r || side*0.4;
+    ctx.drawImage (image, x+side*0.1, y+side*0.1, r*2, r*2);
   };
-
+  
   var drawQueen;
-  if (img) {
+  if (image) {
     drawQueen = drawQueenImg;
   } else {
     drawQueen = drawQueenCircle;
@@ -46,7 +46,7 @@ var drawBoard = function(canvas, board, img) {
 
   for (var i = 0 ; i < size ; i += 1) {
     j = board[i];
-    drawQueen((i+0.5) * side, (board[i]+0.5) * side)
+    drawQueen(i * side, board[i] * side);
   }
   
 

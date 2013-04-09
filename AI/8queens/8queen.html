@@ -8,7 +8,11 @@
 <script src="8queens.js"></script>
 <script src="drawboard.js"></script>
 <script>
+  var qq = new Image();
+  qq.src = 'q.png';
   var show8Queen = function(n) {
+    
+
     var canvas = $("#answer-canvas").get(0);
     var msgDiv = $("#answer-div");
     var start_time = +new Date();
@@ -17,7 +21,7 @@
     var msg = '<br>Found a '+ n + '-queens solution in '
             + (end_time - start_time) + ' ms.<br><br><br>';
     msgDiv.html(msg);
-    drawBoard(canvas, board);
+    drawBoard(canvas, board,qq);
   };
 </script>
 </head>
