@@ -2,7 +2,14 @@ var drawBoard = function(canvas, board, image) {
   var ctx = canvas.getContext("2d");
 
   var width = canvas.getAttribute("width") || 1;
-  var height = canvas.getAttribute("height") || 1;
+  var height = canvas.getAttribute("height") || 1;  
+
+  var clearBoard = function() {
+    ctx.clearRect(0, 0, width, height);
+  };
+
+  clearBoard();
+  if(!board) { return; }
 
   var size = board.length;
   var side = Math.min(width, height) / size;
@@ -36,7 +43,7 @@ var drawBoard = function(canvas, board, image) {
     r = r || side*0.4;
     ctx.drawImage (image, x+side*0.1, y+side*0.1, r*2, r*2);
   };
-  
+
   var drawQueen;
   if (image) {
     drawQueen = drawQueenImg;
@@ -47,9 +54,7 @@ var drawBoard = function(canvas, board, image) {
   for (var i = 0 ; i < size ; i += 1) {
     j = board[i];
     drawQueen(i * side, board[i] * side);
-  }
-  
-
+  } 
   
 
 }; // end drawBoard()

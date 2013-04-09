@@ -8,13 +8,25 @@
 <script src="8queens.js"></script>
 <script src="drawboard.js"></script>
 <script>
+  var isImageOk = function(img) {
+    if (!img.complete) {
+        return false;
+    }
+    if (typeof img.naturalWidth != "undefined" && img.naturalWidth == 0) {
+        return false;
+    }
+    return true;
+  }
+
   var qq = new Image();
   qq.src = 'q.png';
-  var show8Queen = function(n) {
-    
+  if(!isImageOk(qq)) { qq =undefined; }
+
+  var show8Queen = function(n) {   
 
     var canvas = $("#answer-canvas").get(0);
     var msgDiv = $("#answer-div");
+    var srtAns = $("#str-ans");
     var start_time = +new Date();
     var board = eightQueens.evaluate(n, 'hc');
     var end_time = +new Date();
@@ -22,6 +34,7 @@
             + (end_time - start_time) + ' ms.<br><br><br>';
     msgDiv.html(msg);
     drawBoard(canvas, board,qq);
+    srtAns.html('Answer as text : [' + board + ']<br>');
   };
 </script>
 </head>
@@ -45,6 +58,7 @@
         </div>
 
         <canvas id="answer-canvas" width="640" height="640"></canvas>
+        <div id="str-ans"></div>
      </div>
 
    
